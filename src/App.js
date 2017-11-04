@@ -25,7 +25,7 @@ class BooksApp extends React.Component {
     bookDetails.shelf = newShelf
     BooksAPI.update(bookDetails, newShelf).then((books) => {
       this.setState( (prevState) => ({
-        books: [...prevState.books.slice(0, index), bookDetails, ...prevState.books.slice(index + 1)]
+        books: index >= 0 ? [...prevState.books.slice(0, index), bookDetails, ...prevState.books.slice(index + 1)] : prevState.books.concat(bookDetails)
       }))
     })
   }
@@ -43,6 +43,7 @@ class BooksApp extends React.Component {
       })
     }
   }
+  
   render() {
     return (
       <div className="app">
