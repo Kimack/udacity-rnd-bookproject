@@ -9,41 +9,48 @@ import BookSearch from './Booksearch'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    shelves: [],
     queryBooks: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books})
-    })
-  }
-
-  bookUpdate = (bookDetails, newShelf) => {
-    BooksAPI.update(bookDetails, newShelf).then( books => {
-      // this.setState({
-      //   shelves: books
-      // })
-      debugger
-    })
-  }
-
-  bookSearch = (queryString, maxResults = 20) => {
-    BooksAPI.search(queryString, maxResults).then((books) => {
-      this.setState({
-        queryBooks: books
+      this.setState({ 
+        books: books
       })
     })
   }
 
+  bookUpdate = (bookDetails, newShelf) => {
+    const index = this.state.books.findIndex(book => book.id === bookDetails.id)
+    bookDetails.shelf = newShelf
+    BooksAPI.update(bookDetails, newShelf).then((books) => {
+      this.setState( (prevState) => ({
+        books: [...prevState.books.slice(0, index), bookDetails, ...prevState.books.slice(index + 1)]
+      }))
+    })
+  }
+
+  bookSearch = (queryString, maxResults = 20) => {
+    if (queryString === "") {
+      this.setState({
+        queryBooks: []
+      })
+    } else {  
+      BooksAPI.search(queryString, maxResults).then((books) => {
+      this.setState({
+        queryBooks: books
+        })
+      })
+    }
+  }
   render() {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-            <Bookshelves books={this.state.books} shelves={this.state.shelves} updateBook={this.bookUpdate} />
+            <Bookshelves books={this.state.books} updateBook={this.bookUpdate} />
         )} />
         <Route path="/search" render={() => (
-          <BookSearch books={this.state.queryBooks} bookSearch={this.bookSearch} updateBook={this.bookUpdate} />
+          <BookSearch queryBooks={this.state.queryBooks} books={this.state.books} bookSearch={this.bookSearch} updateBook={this.bookUpdate} />
         )} />
       </div>
     )
