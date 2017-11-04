@@ -6,23 +6,25 @@ import BookDisplayCard from './BookDisplayCard'
 class BookSearch extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      queryString: ''
-    }
 
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange = (e) => {
     e.preventDefault()
-    this.setState({
-      queryString: e.target.value
-    })
-    this.props.bookSearch(this.state.queryString)
+    this.props.bookSearch(e.target.value)
   }
   
   render() {
-    const { books } = this.props
+    const { books, queryBooks } = this.props
+
+    for (let i = 0; i < queryBooks.length; i++) {
+      for (let j = 0; j < books.length; j++) {
+        if (queryBooks[i].id === books[j].id) {
+          queryBooks[i].shelf = books[j].shelf;
+        }
+      }
+    }
 
     return(
       <div className="search-books">
@@ -38,12 +40,11 @@ class BookSearch extends Component {
               you don't find a specific author or title. Every search is limited by search terms.
             */}
             <input type="text" placeholder="Search by title or author" onChange={this.handleChange}/>
-
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {books && books.map((book) => <BookDisplayCard key={book.id} book={book} updateBook={this.props.updateBook} />) }
+          {queryBooks.error ? <div className="searchError"><h3>No books returned for this search.  Please try again.</h3></div> : queryBooks.map((book) => <BookDisplayCard key={book.id} book={book} updateBook={this.props.updateBook} />) }
           </ol>
         </div>
       </div>
