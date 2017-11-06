@@ -3,8 +3,9 @@ import { Route } from 'react-router-dom'
 
 import * as BooksAPI from './utils/BooksAPI'
 import './App.css'
-import Bookshelves from './Bookshelves'
-import BookSearch from './Booksearch'
+import Bookshelves from './components/Bookshelves'
+import BookSearch from './components/Booksearch'
+import BookSingle from './components/BookSingle'
 
 class BooksApp extends React.Component {
   state = {
@@ -53,6 +54,7 @@ class BooksApp extends React.Component {
         <Route path="/search" render={() => (
           <BookSearch queryBooks={this.state.queryBooks} books={this.state.books} bookSearch={this.bookSearch} updateBook={this.bookUpdate} />
         )} />
+        <Route path="/books/:id" component={BookSingle} />
       </div>
     )
   }
