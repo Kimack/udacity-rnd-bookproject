@@ -172,3 +172,62 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* custom css */
+
+.searchError h3 { 
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+}
+
+.book-subtitle {
+  margin-top: 0px;
+  color: darkgrey;
+}
+
+.single-book {
+  width: 90%;
+  margin: 10px auto auto auto;
+}
+
+.single-top {
+  margin: auto;
+  width: 50%;
+
+}
+
+.cover-photo {
+  display: block;
+  margin: auto;
+  height: 300px;
+  width: 199px;
+}
+
+.single-book-authors {
+  color: #999;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.single-book-description {
+  margin-top: 15px;
+  padding: 20px;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.single-book-close {
+  display: block;
+  float: left;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url('./icons/arrow-back.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+}
