@@ -20,7 +20,7 @@ class BookDisplayCard extends Component {
         <div className="book">
           <div className="book-top">
             <Link to={`books/${book.id}`} >
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks && book.imageLinks.thumbnail})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks && book.imageLinks.thumbnail})` }}></div></Link>
                 <div className="book-shelf-changer">
                   <select value={book.shelf ? book.shelf : "none"} onChange={this.handleChange}>
                     <option disabled>Move to...</option>
@@ -30,10 +30,9 @@ class BookDisplayCard extends Component {
                     <option value="none">None</option>
                   </select>
                 </div>
-            </Link>
           </div>
           <div className="book-title">{book.title}</div>
-          <div className="book-authors">by: <br/><br/>{book.authors && book.authors.join(", ")}</div>
+          <div className="book-authors">by: {book.authors && book.authors.join(", ")}</div>
         </div>
       </li>
     )
