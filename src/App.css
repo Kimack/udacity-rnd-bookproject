@@ -173,13 +173,19 @@ body, .app {
   font-size: 0.8em;
 }
 
-/* custom css */
+
+
+
+
+/* custom css search page */
 
 .searchError h3 { 
   background-color: red;
   color: white;
   padding: 10px 20px;
 }
+
+/* single book page */
 
 .book-subtitle {
   margin-top: 0px;
