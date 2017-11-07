@@ -18,12 +18,10 @@ class BookSearch extends Component {
   render() {
     const { books, queryBooks } = this.props
 
+    // Loop through search results and if the book matches one already on a shelf, update the status of that book's shelf to match.
     for (let i = 0; i < queryBooks.length; i++) {
-      for (let j = 0; j < books.length; j++) {
-        if (queryBooks[i].id === books[j].id) {
-          queryBooks[i].shelf = books[j].shelf;
-        }
-      }
+      const book = books.filter( (book) => book.id === queryBooks[i].id )
+      book.length > 0 && (queryBooks[i].shelf = book[0].shelf)
     }
 
     return(
