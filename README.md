@@ -6,7 +6,7 @@ This project allows you to move books from one shelf to another. It also allows 
 
 ##### To take a look at this application in action once you fork and clone the repo:
 
-* insall all project dependencies with 'npm install'
+* install all project dependencies with 'npm install'
 * start the development server with 'npm start'
 
 
