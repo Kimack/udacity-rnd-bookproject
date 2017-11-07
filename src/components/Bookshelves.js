@@ -8,6 +8,7 @@ class Bookshelves extends Component {
   render() {
     const { books } = this.props
 
+    // Filtering out the books belonging on each shelf so those lists of books can be sent to the BookDisplayCard component and displayed on their corresponding shelf.
     let currentlyReadingShelf = books.filter((book) => {
       return book.shelf === "currentlyReading"
     })
