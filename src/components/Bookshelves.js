@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import BookDisplayCard from './BookDisplayCard'
+import BookDisplayCard from './BookDisplayCard';
 
 
 class Bookshelves extends Component {
   render() {
-    const { books } = this.props
+    const { books } = this.props;
 
     // Filtering out the books belonging on each shelf so those lists of books can be sent to the BookDisplayCard component and displayed on their corresponding shelf.
-    let currentlyReadingShelf = books.filter((book) => {
-      return book.shelf === "currentlyReading"
+    const currentlyReadingShelf = books.filter((book) => {
+      return book.shelf === "currentlyReading";
     })
-    let wantToReadShelf = books.filter((book) => {
-      return book.shelf === "wantToRead"
+    const wantToReadShelf = books.filter((book) => {
+      return book.shelf === "wantToRead";
     })
-    let readShelf = books.filter((book) => {
-      return book.shelf === "read"
+    const readShelf = books.filter((book) => {
+      return book.shelf === "read";
     })
     
     return (
@@ -64,4 +64,4 @@ class Bookshelves extends Component {
   }
 }
 
-export default Bookshelves
+export default Bookshelves;

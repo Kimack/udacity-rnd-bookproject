@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class BookDisplayCard extends Component {
   constructor(props) {
     super(props)
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
-    e.preventDefault()
-    this.props.updateBook(this.props.book, e.target.value)
+    e.preventDefault();
+    this.props.updateBook(this.props.book, e.target.value);
   }
 
   render() {
@@ -39,4 +39,4 @@ class BookDisplayCard extends Component {
   }  
 }
 
-export default BookDisplayCard
+export default BookDisplayCard;

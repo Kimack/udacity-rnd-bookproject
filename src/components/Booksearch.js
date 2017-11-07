@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import BookDisplayCard from './BookDisplayCard'
+import BookDisplayCard from './BookDisplayCard';
 
 class BookSearch extends Component {
   constructor(props) {
     super(props)
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
-    e.preventDefault()
-    this.props.bookSearch(e.target.value)
+    e.preventDefault();
+    this.props.bookSearch(e.target.value);
   }
   
   render() {
-    const { books, queryBooks } = this.props
+    const { books, queryBooks } = this.props;
 
     // Loop through search results and if the book matches one already on a shelf, update the status of that book's shelf to match.
     for (let i = 0; i < queryBooks.length; i++) {
-      const book = books.filter( (book) => book.id === queryBooks[i].id )
-      book.length > 0 && (queryBooks[i].shelf = book[0].shelf)
+      const book = books.filter( (book) => book.id === queryBooks[i].id );
+      book.length > 0 && (queryBooks[i].shelf = book[0].shelf);
     }
 
     return(
@@ -50,4 +50,4 @@ class BookSearch extends Component {
   }
 }
 
-export default BookSearch
+export default BookSearch;

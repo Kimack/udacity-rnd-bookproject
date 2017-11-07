@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import { get } from '../utils/BooksAPI'
+import { get } from '../utils/BooksAPI';
 
 class BookSingle extends Component {
   state = {
@@ -43,9 +43,9 @@ class BookSingle extends Component {
         </div>
       )
     } else {
-      return null
+      return null;
     }
   }
 }
 
-export default BookSingle
+export default BookSingle;
