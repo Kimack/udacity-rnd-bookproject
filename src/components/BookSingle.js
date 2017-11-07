@@ -33,7 +33,6 @@ class BookSingle extends Component {
             <div>
             <div className="single-book">
           <div className="single-top">
-            {/* <div className="book-cover" style={{ width: 199, height: 300, backgroundImage: `url(${this.state.book.imageLinks && this.state.book.imageLinks.thumbnail})` }}></div> */}
             <img src={`${this.state.book.imageLinks && this.state.book.imageLinks.thumbnail}`} alt="book cover" className="cover-photo" />
           </div>
           <div className="single-book-authors">{this.state.book.authors && `by: ` + this.state.book.authors.join(", ")}</div>
